@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 #Return (int) seconds since 1st january 1970 (Known as Posix Time, Unix epoch, Unix Timestamp)
 def getUnixTimeStamp():
@@ -31,3 +31,10 @@ def getTime():
 #Return 19:11:39.239338
 def getTimeMs(): 
     return datetime.now().time()
+
+#Return day of yesterday, based on time delta
+def getYesterdayTimeStamp(format=None):
+    if(format==None):
+        return datetime.strftime(datetime.now() - timedelta(1), "%Y%m%d")
+    else:
+        return datetime.strftime(datetime.now() - timedelta(1), format)
