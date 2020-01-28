@@ -20,6 +20,23 @@ def getTimeStamp(format=None):
 def getDateTime(): 
     return datetime.now()
 
+# Input "YYYYMMDDHHMMSS.XYZ"
+# Return ("DD/MM/AAAA", "HH:MM:SS")
+def getDateTimeFromFilename(filename):
+    splitUp = filename.split(".")
+    dt = datetime.strptime(splitUp[0], "%Y%m%d%H%M%S")
+    date = dt.strftime("%d/%m/%Y")
+    time = dt.strftime("%H:%M:%S")
+    return date, time
+
+# Input "YYYYMMDDHHMMSS"
+# Return ("DD/MM/AAAA", "HH:MM:SS")
+def getDateTimeFromString(str):
+    dt = datetime.strptime(str, "%Y%m%d%H%M%S")
+    date = dt.strftime("%d/%m/%Y")
+    time = dt.strftime("%H:%M:%S")
+    return date, time
+
 #Return 2020-01-12
 def getDate(): 
     return datetime.now().date()
